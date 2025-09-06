@@ -12,59 +12,39 @@ A personal API playground that showcases skills, projects, and experience throug
 - **Basic Authentication** for write operations
 - **CORS Enabled** for frontend-backend communication
 
+ ## 📝 Resume
+
+📄 **Karan Jadhav – Data Science Resume**  
+
+- Bachelor of Technology in Computer Science  
+- AI/ML Engineer & Data Scientist  
+- Skilled in Python, Flask, TensorFlow, Scikit-learn  
+- Focused on Machine Learning, Deep Learning, and Generative AI  
+
+👉 [**Download My Resume (PDF)**](https://github.com/karanjadhav1771/me-api-playground/blob/main/assets/Karan_Jadhav_Resume.pdf](https://drive.google.com/file/d/1DcenkTGTBBuQh7yF3lfD9IjUYrr9Bw-P/view?usp=sharing))
+
+
 ## 🏗️ Architecture
-
+```text
 me-api-playground/
-├── backend/
+├── backend/              # Flask API
 │   ├── src/
-│   │   ├── __init__.py
-│   │   ├── app.py
-│   │   ├── models/
-│   │   │   ├── __init__.py
-│   │   │   └── profile.py
-│   │   ├── routes/
-│   │   │   ├── __init__.py
-│   │   │   ├── profile.py
-│   │   │   ├── projects.py
-│   │   │   ├── skills.py
-│   │   │   └── health.py
-│   │   ├── database/
-│   │   │   ├── __init__.py
-│   │   │   └── sqlite_db.py    # REPLACED db.py with sqlite_db.py
-│   │   ├── utils/
-│   │   │   ├── __init__.py
-│   │   │   ├── auth.py
-│   │   │   └── helpers.py
-│   │   └── config.py
-│   ├── requirements.txt
-│   ├── seed_data.py           # UPDATED for SQLite
-│   └── run.py
-├── frontend/
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── style.css
-│   │   └── js/
-│   │       └── script.js
-│   └── templates/
-│       ├── index.html
-│       ├── profile.html
-│       ├── projects.html
-│       └── search.html
-├── tests/
-│   ├── __init__.py
-│   ├── test_health.py
-│   ├── test_profile.py
-│   ├── test_projects.py
-│   ├── test_skills.py
-│   └── test_search.py
-├── .env
-├── .gitignore
-├── application.py
-├── README.md
-├── requirements.txt
-└── setup.py
+│   │   ├── models/       # Data models
+│   │   ├── routes/       # API routes
+│   │   ├── database/     # Database configuration
+│   │   ├── utils/        # Utilities and helpers
+│   │   └── config.py     # Application configuration
+│   ├── seed_data.py      # Database seeding script
+│   └── requirements.txt  # Python dependencies
+├── frontend/             # Web interface
+│   ├── templates/        # HTML templates
+│   └── static/           # CSS and JavaScript
+├── tests/                # Test cases
+├── me_api.db             # SQLite database (auto-generated)
+├── application.py        # Main application entry point
+└── README.md             # This file
 
-
+```
 ### Technology Stack
 - **Backend**: Flask, SQLite, Python
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
@@ -94,16 +74,139 @@ me-api-playground/
 pip install -r requirements.txt
 
 ### Configure environment variables
-
-Create .env file
+```
+#Create .env file
 echo "SECRET_KEY=$(python -c 'import secrets; print(secrets.token_hex(32))')" > .env
 echo "BASIC_AUTH_USERNAME=admin" >> .env
 echo "BASIC_AUTH_PASSWORD=password123" >> .env
 echo "SQLITE_DB_PATH=me_api.db" >> .env
-
+```
 ### Seed the database
 python backend/seed_data.py
 
 ### Run the application
 python application.py
 
+
+📊 Database Schema
+SQLite Table Structure
+SQL
+```
+CREATE TABLE profile (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data TEXT NOT NULL,          -- JSON encoded profile data
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+Profile Data Structure (JSON)
+JSON
+```
+{
+  "name": "String",
+  "email": "String",
+  "location": "String",
+  "phone": "String",
+  "title": "String",
+  "bio": "String",
+  "education": [
+    {
+      "institution": "String",
+      "degree": "String",
+      "year": "String",
+      "cgpa": "String",
+      "location": "String"
+    }
+  ],
+  "skills": [
+    {
+      "name": "String",
+      "proficiency": "Number",
+      "category": "String"
+    }
+  ],
+  "projects": [
+    {
+      "title": "String",
+      "description": "String",
+      "skills": ["String"],
+      "technologies": ["String"],
+      "achievements": ["String"],
+      "links": {
+        "github": "String",
+        "live": "String"
+      }
+    }
+  ],
+  "work": [
+    {
+      "company": "String",
+      "position": "String",
+      "duration": "String",
+      "description": "String",
+      "skills": ["String"],
+      "achievements": ["String"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "String",
+      "issuer": "String",
+      "year": "String",
+      "link": "String"
+    }
+  ],
+  "links": {
+    "github": "String",
+    "linkedin": "String",
+    "portfolio": "String",
+    "resume": "String"
+  }
+}
+```
+Get Profile
+```
+curl -X GET http://localhost:5000/api/profile
+Get Projects Filtered by Skill
+```
+
+📊 Logging
+The application includes built-in logging:
+```
+import logging
+logging.basicConfig(level=logging.INFO)
+app.logger.info('Application started successfully')
+Logs are output to the console and can be redirected to files in production.
+```
+### Known Limitations
+SQLite Database: Not suitable for high-traffic production environments.
+
+Basic Authentication: Not recommended for public-facing production apps.
+
+File Uploads: Not supported for profile images or project media.
+
+### Future Enhancements
+[ ] Add pagination for large datasets
+
+[ ] Implement JWT authentication
+
+[ ] Add file upload support
+
+[ ] Create admin dashboard
+
+[ ] Create mobile app version
+
+
+### Acknowledgments
+Flask community for the excellent web framework
+
+SQLite for the lightweight database solution
+
+Modern CSS techniques for the responsive design
+
+Open source contributors for various Python packages
+
+Note: This project is designed for personal portfolio showcasing and development purposes. For production use, consider implementing additional security measures and using a more robust database system.
+
+### 📞 Connect with Me
+LinkedIn | GitHub | Email
