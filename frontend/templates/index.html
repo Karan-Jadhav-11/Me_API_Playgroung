@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me-API Playground - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Me-API Playground</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/search">Search</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Welcome to My API Playground</h2>
+            <p>This is a personal API playground that showcases my skills, projects, and experience.</p>
+            <p>Use the navigation above to explore:</p>
+            <ul>
+                <li><strong>Profile</strong>: View my personal information, education, and work experience</li>
+                <li><strong>Projects</strong>: Browse my projects and filter by skills</li>
+                <li><strong>Search</strong>: Search across all my data</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h3>Quick Links</h3>
+            <p>
+                <a href="/api/profile">View Profile API</a> | 
+                <a href="/api/projects">View Projects API</a> | 
+                <a href="/health">Health Check</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

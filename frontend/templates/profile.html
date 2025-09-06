@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me-API Playground - Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Me-API Playground</h1>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/search">Search</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>My Profile</h2>
+        <div id="profile-content">
+            <div class="loading">Loading profile...</div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
