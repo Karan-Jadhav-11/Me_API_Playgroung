@@ -71,8 +71,9 @@ me-api-playground/
    conda activate venv/
    
 ### Install dependencies
+```
 pip install -r requirements.txt
-
+```
 ### Configure environment variables
 ```
 #Create .env file
@@ -82,11 +83,13 @@ echo "BASIC_AUTH_PASSWORD=password123" >> .env
 echo "SQLITE_DB_PATH=me_api.db" >> .env
 ```
 ### Seed the database
+```
 python backend/seed_data.py
-
+```
 ### Run the application
+```
 python application.py
-
+```
 
 📊 Database Schema
 SQLite Table Structure
