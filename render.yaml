@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: my-api-playground
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn application:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: BASIC_AUTH_USERNAME
+        value: admin
+      - key: BASIC_AUTH_PASSWORD
+        value: your-secure-password-here
